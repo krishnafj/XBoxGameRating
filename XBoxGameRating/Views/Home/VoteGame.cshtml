@@ -1,0 +1,35 @@
+﻿@model VoteGameModel
+@{
+    ViewData["Title"] = "Vote Game";
+}
+
+<div class="text-center">
+    <h3 style="text-align:left">Vote Game</h3>
+    
+    <form asp-action="VoteGame">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Select Game:</label>
+            <div class="col-sm-10">
+                @Html.DropDownListFor(x => x.GameId, new SelectList(Model.GameList, "Id", "Title"), "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Select Rating:</label>
+            <div class="col-sm-10">
+                @Html.DropDownListFor(x => x.Rating, new List<SelectListItem>
+                 { new SelectListItem { Text = "1 Star", Value = "1", Selected=true},
+                   new SelectListItem { Text = "2 Star", Value = "2"},
+                   new SelectListItem { Text = "3 Star", Value = "3"},
+                   new SelectListItem { Text = "4 Star", Value = "4"},
+                   new SelectListItem { Text = "5 Star", Value = "5"}
+                   }, "", new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="form-group row float-right">
+            <button type="submit" class="float-right btn btn-primary">Submit Vote</button>
+        </div>
+            
+    </form>
+    
+</div>

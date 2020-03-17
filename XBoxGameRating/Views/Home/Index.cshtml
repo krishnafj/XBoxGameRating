@@ -1,0 +1,33 @@
+﻿
+@model GameModel;
+
+@{
+    ViewData["Title"] = "Game Review List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">XBox Games</h1>
+    <br />
+    <div class="form-group row float-right">
+        <a class="nav-link active" href="~/Home/VoteGame">Vote game</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in Model.GameList)
+            {
+                <tr>
+                    <td><a href="~/Home/Edit/@game.Id.ToString()">@game.Title</a></td>
+                    <td>@game.Description</td>
+                    <td>@game.Rating</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
